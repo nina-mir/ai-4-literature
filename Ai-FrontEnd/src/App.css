@@ -13,10 +13,3 @@ html {
 *::after {
   box-sizing: inherit;
 }
-
-body {
-  /* background-image: url(./assets/09.jpg);
-  background-size: cover;
-  background-repeat: no-repeat; */
-  overflow: hidden;
-}

@@ -1,4 +1,6 @@
 import Button from "react-bootstrap/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import "./Header.css";
 
 const Header = () => {
@@ -8,7 +10,7 @@ const Header = () => {
         <a href="https://github.com/nina-mir/ai-4-literature" target="_blank">
           <Button className="aboutButton">
             About
-            <i className="fa-brands fa-github gitHubIcon"></i>
+            <FontAwesomeIcon icon={faGithub} className="gitHubIcon" />
           </Button>
         </a>
         <aside>

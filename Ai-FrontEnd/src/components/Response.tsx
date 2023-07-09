@@ -1,52 +1,47 @@
+import { useEffect, useState } from "react";
 import "./Response.css";
+import backendData from "../../../data/backend_data.json";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+interface Item {
+  id: number;
+  title: string;
+  author: string;
+  url: string;
+  time_2_read: string;
+  response: string;
+}
+
+library.add(faClock);
 
 const Response = () => {
+  const [data, setData] = useState<Item[]>([]);
+
+  useEffect(() => {
+    setData(backendData);
+  }, []);
+
+  console.log(data);
   return (
     <>
       <div className="responseContainer">
         <div className="row">
-          <div className="col-md-4">
-            <section className="responseSection">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-                deleniti, nisi adipisci magni pariatur eos laudantium totam ea!
-                Unde, in commodi? Dolor eveniet qui, laborum in nesciunt ex!
-                Delectus, laboriosam. Velit atque cum consequatur, alias aliquid
-                assumenda, consectetur omnis tenetur ab dolor facilis dolorum!
-                Dignissimos expedita eum excepturi minus error aspernatur nobis,
-                sapiente amet, necessitatibus blanditiis, eaque ratione
-                doloremque. Ipsam.
-              </p>
-            </section>
-          </div>
-          <div className="col-md-4">
-            <section className="responseSection">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-                deleniti, nisi adipisci magni pariatur eos laudantium totam ea!
-                Unde, in commodi? Dolor eveniet qui, laborum in nesciunt ex!
-                Delectus, laboriosam. Velit atque cum consequatur, alias aliquid
-                assumenda, consectetur omnis tenetur ab dolor facilis dolorum!
-                Dignissimos expedita eum excepturi minus error aspernatur nobis,
-                sapiente amet, necessitatibus blanditiis, eaque ratione
-                doloremque. Ipsam.
-              </p>
-            </section>
-          </div>
-          <div className="col-md-4">
-            <section className="responseSection">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-                deleniti, nisi adipisci magni pariatur eos laudantium totam ea!
-                Unde, in commodi? Dolor eveniet qui, laborum in nesciunt ex!
-                Delectus, laboriosam. Velit atque cum consequatur, alias aliquid
-                assumenda, consectetur omnis tenetur ab dolor facilis dolorum!
-                Dignissimos expedita eum excepturi minus error aspernatur nobis,
-                sapiente amet, necessitatibus blanditiis, eaque ratione
-                doloremque. Ipsam.
-              </p>
-            </section>
-          </div>
+          {data.map((item) => (
+            <div className="col-md-4" key={item.id}>
+              <a href={item.url} target="_blank" rel="noopener noreferrer">
+                <section className="responseSection">
+                  <p>{item.title}</p>
+                  <p>{item.author}</p>
+                  <section className="timer">
+                    <p style={{ marginBottom: "0" }}>{item.time_2_read}</p>
+                    <FontAwesomeIcon icon="clock" className="timerIcon" />
+                  </section>
+                </section>
+              </a>
+            </div>
+          ))}
         </div>
       </div>
     </>
