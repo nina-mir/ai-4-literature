@@ -1,0 +1,44 @@
+.selectionContainer {
+  background-color: #354b45;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  color: #97b0aa;
+}
+
+.selectorsContainer {
+  display: flex;
+  justify-content: space-around;
+  padding: 3rem;
+}
+
+.selectionButtonContainer button {
+  border-radius: 5rem;
+}
+
+.additionalButtonsContainer {
+  padding: 4rem 0 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.additionalButtonsContainer button {
+  border-radius: 5rem;
+}
+
+.yourSelectionContainer {
+  padding: 2rem 0 0 0;
+}
+
+.yourSelectionContainer button {
+  border-radius: 5rem;
+}
+
+.yourSelectionContainer div {
+  padding: 2rem 0 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,22 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  /* background-image: url(./assets/09.jpg);
+  background-size: cover;
+  background-repeat: no-repeat; */
+  overflow: hidden;
+}

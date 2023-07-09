@@ -1,0 +1,27 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  text-align: end;
+  padding: 0 0 3rem 0;
+}
+
+.headerContainer p {
+  border-radius: 1rem;
+  padding: 0.5rem 2rem;
+  color: white;
+  background-color: #354b45;
+}
+
+.aboutButton {
+  background-color: #354b45 !important;
+  border: none !important;
+  height: fit-content;
+}
+
+.aboutButton a {
+  color: #97b0aa;
+}
+
+.gitHubIcon {
+  padding-left: 1rem;
+}
