@@ -9,4 +9,6 @@ We envision that  the users could use some filter words to narrow their search o
 To recommend these pieces, we want to either classify each literary piece or to use AI to summarize it to no more than 10-15 words.
 
 ## TEAM LOGO:
-![log](https://github.com/nina-mir/ai-4-literature/assets/81191657/ba867434-ff96-4457-a407-4ce92dfd3982)
+![Team Logo](https://github.com/nina-mir/ai-4-literature/assets/81191657/604ca56b-06a3-411b-bbd5-6360136eb29e)
+
+
