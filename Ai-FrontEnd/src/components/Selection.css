@@ -57,3 +57,20 @@
   width: 20rem;
   background-color: #28d6b8 !important;
 }
+
+/*  laptop  */
+@media only screen and (max-width: 1450px) {
+}
+
+/*  tablets */
+@media only screen and (max-width: 768px) {
+}
+
+/*  phones */
+@media only screen and (max-width: 480px) {
+  .selectorsContainer {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem;
+  }
+}

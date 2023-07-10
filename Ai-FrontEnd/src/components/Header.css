@@ -27,3 +27,10 @@
 .gitHubIcon {
   padding-left: 1rem;
 }
+
+@media only screen and (max-width: 480px) {
+  .headerContainer {
+    justify-content: center;
+    gap: 2rem;
+  }
+}
