@@ -8,7 +8,4 @@ Using Google Vertex AI model(s) to recommend recently published literary pieces 
 We envision that  the users could use some filter words to narrow their search or our recommendations.
 To recommend these pieces, we want to either classify each literary piece or to use AI to summarize it to no more than 10-15 words.
 
-## TEAM LOGO:
-![Team Logo](https://github.com/nina-mir/ai-4-literature/assets/81191657/604ca56b-06a3-411b-bbd5-6360136eb29e)
-
 
