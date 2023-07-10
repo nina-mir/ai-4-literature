@@ -30,7 +30,11 @@
 
 @media only screen and (max-width: 480px) {
   .headerContainer {
-    justify-content: center;
-    gap: 2rem;
+    text-align: center !important;
+    flex-direction: column;
+  }
+
+  .aboutButton {
+    display: none;
   }
 }

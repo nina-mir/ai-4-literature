@@ -70,3 +70,10 @@
     transform: translateY(-5px);
   }
 }
+
+@media only screen and (max-width: 480px) {
+  .headerContainer {
+    justify-content: center;
+    gap: 2rem;
+  }
+}

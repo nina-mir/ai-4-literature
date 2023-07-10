@@ -173,7 +173,6 @@ const Selection = ({ updateData }: { updateData: Function }) => {
   const moodSelectStyles = {
     control: (provided: any) => ({
       ...provided,
-      width: "400px", // Adjust the width as needed
     }),
   };
 

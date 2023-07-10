@@ -31,22 +31,6 @@
   border-radius: 5rem;
 }
 
-.yourSelectionContainer {
-  padding: 2rem 0 0 0;
-}
-
-.yourSelectionContainer button {
-  border-radius: 5rem;
-}
-
-.yourSelectionContainer div {
-  padding: 2rem 0 0 0;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
 .selectionBtn {
   width: 20rem;
   background-color: #0d90de !important;
@@ -71,6 +55,10 @@
   .selectorsContainer {
     flex-direction: column;
     gap: 2rem;
-    padding: 3rem;
+    padding: 0 0 2rem 0;
+  }
+
+  .selectionBtn {
+    width: fit-content;
   }
 }
