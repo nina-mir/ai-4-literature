@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
 import "./Response.css";
-import backendData from "../../../data/backend_data.json";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-interface Item {
+export interface Item {
   id: number;
   title: string;
   author: string;
@@ -16,27 +14,21 @@ interface Item {
 
 library.add(faClock);
 
-const Response = () => {
-  const [data, setData] = useState<Item[]>([]);
-
-  useEffect(() => {
-    setData(backendData);
-  }, []);
-
-  console.log(data);
+const Response = ({ data }: { data: Item[] }) => {
   return (
     <>
       <div className="responseContainer">
         <div className="row">
-          {data.map((item) => (
+          {data?.map((item) => (
             <div className="col-md-4" key={item.id}>
               <a href={item.url} target="_blank" rel="noopener noreferrer">
                 <section className="responseSection">
-                  <p>{item.title}</p>
-                  <p>{item.author}</p>
+                  <h5 className="responseSectionTitle">{item.title}</h5>
+                  <h6 className="responseSectionAuthor">{item.author}</h6>
+                  <p className="responseSectionResponse">{item.response}</p>
                   <section className="timer">
                     <p style={{ marginBottom: "0" }}>{item.time_2_read}</p>
-                    <FontAwesomeIcon icon="clock" className="timerIcon" />
+                    <FontAwesomeIcon icon={faClock} className="timerIcon" />
                   </section>
                 </section>
               </a>

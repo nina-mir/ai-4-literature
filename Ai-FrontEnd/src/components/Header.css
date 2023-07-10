@@ -7,15 +7,17 @@
 
 .headerContainer p {
   border-radius: 1rem;
-  padding: 0.5rem 2rem;
-  color: white;
-  background-color: #354b45;
+
+  color: black;
+  /* background-color: #354b45; */
 }
 
 .aboutButton {
-  background-color: #354b45 !important;
+  /* background-color: #354b45 !important; */
+  color: black;
   border: none !important;
   height: fit-content;
+  font-size: 1.5rem;
 }
 
 .aboutButton a {

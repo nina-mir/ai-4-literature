@@ -2,15 +2,16 @@ import { useState } from "react";
 import Select from "react-select";
 import "./Selection.css";
 import { Button } from "react-bootstrap";
+import axios from "axios";
 
-const Selection = () => {
+const Selection = ({ updateData }: { updateData: Function }) => {
   const options = [
     {
       label: "Mood",
       options: [
         { value: "Aflutter", label: "Aflutter" },
         { value: "Aloof", label: "Aloof" },
-        { value: "Amusement", label: "Amusement" },
+        { value: "Amused", label: "Amused" },
         { value: "Angry", label: "Angry" },
         { value: "Antsy", label: "Antsy" },
         { value: "Avid", label: "Avid" },
@@ -41,11 +42,6 @@ const Selection = () => {
         { value: "Dither", label: "Dither" },
         { value: "Drained", label: "Drained" },
         { value: "Dyspeptic", label: "Dyspeptic" },
-      ],
-    },
-    {
-      label: "Mood 2",
-      options: [
         { value: "Emotional", label: "Emotional" },
         { value: "Enthused", label: "Enthused" },
         { value: "Erratic", label: "Erratic" },
@@ -77,6 +73,8 @@ const Selection = () => {
         { value: "Lonely", label: "Lonely" },
         { value: "Love", label: "Love" },
       ],
+      isMulti: true, // Allow multiple selections
+      maxSelections: 2, // Set the maximum number of selections
     },
     {
       label: "Reading time",
@@ -92,19 +90,99 @@ const Selection = () => {
   const [selectedOptions, setSelectedOptions] = useState<any>({});
 
   const handleOptionChange = (selectedOption: any, selector: string) => {
-    setSelectedOptions((prevSelectedOptions: any) => ({
-      ...prevSelectedOptions,
-      [selector]: selectedOption,
-    }));
+    setSelectedOptions((prevSelectedOptions: any) => {
+      if (!selectedOption) {
+        const updatedOptions = { ...prevSelectedOptions };
+        delete updatedOptions[selector];
+        return updatedOptions;
+      }
+
+      // Check if the maximum number of selections has been defined
+      const maxSelections = options.find(
+        (option) => option.isMulti
+      )?.maxSelections;
+
+      // Check if the maximum number of selections has been reached
+      if (maxSelections && selectedOption.length > maxSelections) {
+        return prevSelectedOptions; // Do not update the selected options
+      }
+
+      return {
+        ...prevSelectedOptions,
+        [selector]: selectedOption,
+      };
+    });
+  };
+
+  const handleFilterData = () => {
+    const selectedMoods = selectedOptions?.["selector-0"] || [];
+    const selectedReadingTime = selectedOptions?.["selector-1"]?.value || null;
+
+    axios
+      .get("https://test-hackathon-backend.onrender.com/data")
+      .then((response) => {
+        const filteredItems = response.data.data.filter((item: any) => {
+          // Check if item's response includes all selected moods
+          if (
+            selectedMoods.length > 0 &&
+            !selectedMoods.every((mood: any) =>
+              item.response.includes(mood.value)
+            )
+          ) {
+            return false;
+          }
+
+          // Check if item's time_2_read matches the selected reading time
+          if (selectedReadingTime) {
+            const timeToRead = parseInt(item.time_2_read, 10);
+
+            if (selectedReadingTime === "5 minutes" && timeToRead >= 5) {
+              return false;
+            }
+
+            if (
+              selectedReadingTime === "10 minutes" &&
+              (timeToRead <= 5 || timeToRead >= 10)
+            ) {
+              return false;
+            }
+
+            if (
+              selectedReadingTime === "15 minutes" &&
+              (timeToRead <= 10 || timeToRead >= 15)
+            ) {
+              return false;
+            }
+
+            if (selectedReadingTime === "15+ minutes" && timeToRead < 15) {
+              return false;
+            }
+          }
+
+          return true;
+        });
+
+        updateData(filteredItems);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+
+  // Custom styles for the mood select container
+  const moodSelectStyles = {
+    control: (provided: any) => ({
+      ...provided,
+      width: "400px", // Adjust the width as needed
+    }),
   };
 
   return (
     <div className="selectionContainer">
-      <h6>Choose from the following categories:</h6>
+      <h6 className="selectionTitle">Choose from the following categories:</h6>
       <div className="selectorsContainer">
         {options.map((optionGroup, index) => (
           <div key={index} className="selector">
-            <h6>{optionGroup.label}</h6>
             <Select
               options={optionGroup.options}
               value={selectedOptions[`selector-${index}`]}
@@ -114,11 +192,17 @@ const Selection = () => {
               isClearable
               isSearchable
               placeholder={`Select ${optionGroup.label}`}
+              isMulti={optionGroup.isMulti}
+              styles={
+                optionGroup.label === "Mood" ? moodSelectStyles : undefined
+              } // Apply custom styles for the mood select container
             />
           </div>
         ))}
       </div>
-      <Button variant="primary">Submit</Button>
+      <Button onClick={handleFilterData} className="selectionBtn">
+        Submit
+      </Button>
     </div>
   );
 };

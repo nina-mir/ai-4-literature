@@ -10,13 +10,31 @@
   border: 1px black solid;
   padding: 3rem;
   margin: 1rem;
-  height: 15rem;
+  height: fit-content;
   transition: background-color 0.3s ease;
   border-radius: 1rem;
+  color: black;
+  box-shadow: 11px 7px 7px -3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 11px 7px 7px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 11px 7px 7px -3px rgba(0, 0, 0, 0.75);
+}
+
+.responseSectionTitle {
+  text-decoration: underline;
+  padding: 0 0 1rem 0;
+}
+
+.responseSectionAuthor {
+  padding: 0 0 1rem 0;
+  color: #84b880;
+}
+
+.responseSectionResponse {
+  font-style: italic;
 }
 
 .responseSection:hover {
-  background-color: #97b0aa;
+  background-color: #354b45;
   color: white;
 }
 

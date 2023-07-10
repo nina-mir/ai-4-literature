@@ -6,6 +6,10 @@
   color: #97b0aa;
 }
 
+.selectionTitle {
+  color: #84b880;
+}
+
 .selectorsContainer {
   display: flex;
   justify-content: space-around;
@@ -41,4 +45,15 @@
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
+}
+
+.selectionBtn {
+  width: 20rem;
+  background-color: #0d90de !important;
+  border: none !important;
+}
+
+.selectionBtn:hover {
+  width: 20rem;
+  background-color: #28d6b8 !important;
 }

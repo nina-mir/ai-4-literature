@@ -1,0 +1,16 @@
+.footerSocials {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem;
+  font-size: 2rem;
+}
+
+.footerSocials a {
+  text-decoration: none;
+  color: black;
+}
+
+.footerSocials a:hover {
+  color: black;
+}
